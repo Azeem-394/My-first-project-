@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salary Increase Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #eef2f3;
+      padding: 20px;
+    }
+    .calculator {
+      max-width: 500px;
+      background: #fff;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .output {
+      margin-top: 25px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 6px;
+      display: none;
+    }
+    .output div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    .output div:last-child {
+      font-weight: bold;
+      color: #27ae60;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>Salary Increase Calculator</h2>
+    <label for="basicSalary">Basic Pay:</label>
+    <input type="number" id="basicSalary" placeholder="Enter your basic pay" />
+
+    <button onclick="calculateSalaryIncrease()">Calculate</button>
+
+    <div class="output" id="outputSection">
+      <div>
+        <span>DRA (30%):</span>
+        <span id="draAmount" class="highlight"></span>
+      </div>
+      <div>
+        <span>Adhoc Relief (10%):</span>
+        <span id="adhocAmount" class="highlight"></span>
+      </div>
+      <div>
+        <span>Total Increase:</span>
+        <span id="totalIncrease"></span>
+      </div> <hr>
+ <footer> <br>Muhammad Zia Ul Haq SST(M/P) </footer>
+    </div> 
+  </div>
+
+  <script>
+    function calculateSalaryIncrease() {
+      const basicSalary = parseFloat(document.getElementById("basicSalary").value);
+
+      if (isNaN(basicSalary) || basicSalary <= 0) {
+        alert("Please enter a valid basic salary amount.");
+        return;
+      }
+
+      const dra = basicSalary * 0.3;
+      const adhoc = basicSalary * 0.1;
+      const total = dra + adhoc;
+
+      document.getElementById("draAmount").textContent = dra.toFixed(2);
+      document.getElementById("adhocAmount").textContent = adhoc.toFixed(2);
+      document.getElementById("totalIncrease").textContent = total.toFixed(2);
+
+      document.getElementById("outputSection").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
